@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E M Automobile's – Two Wheeler Repair & Spare Parts, Shillong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0d0d0d;
+      --steel:   #1c1c1e;
+      --mid:     #2a2a2c;
+      --border:  #333336;
+      --muted:   #6b6b70;
+      --light:   #c8c8cc;
+      --white:   #f2f2f4;
+      --orange:  #e85d1a;
+      --orange2: #ff7a3d;
+      --green:   #22c55e;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(13,13,13,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff !important;
+      padding: 9px 22px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange2) !important; color: #fff !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated gear background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .gear {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      opacity: 0.18;
+    }
+    .gear-1 {
+      width: 500px; height: 500px;
+      top: -100px; right: -100px;
+      animation: spin 40s linear infinite;
+    }
+    .gear-2 {
+      width: 280px; height: 280px;
+      bottom: 60px; right: 180px;
+      animation: spin 28s linear infinite reverse;
+    }
+    .gear-3 {
+      width: 160px; height: 160px;
+      bottom: 200px; right: 80px;
+      animation: spin 18s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* diagonal orange stripe */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 42%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 40%, rgba(232,93,26,0.06) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--orange);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--light);
+      font-weight: 300;
+      max-width: 480px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--light);
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* Status badge */
+    .status-bar {
+      display: flex;
+      gap: 32px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .status-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .status-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .status-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .dot-green { color: var(--green); }
+    .dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      margin-right: 6px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .rating-stars { color: #f4b942; letter-spacing: 2px; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 40px; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--steel); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--mid);
+      padding: 36px 32px;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width 0.3s ease;
+    }
+    .service-card:hover { background: #2f2f32; }
+    .service-card:hover::after { width: 100%; }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--black); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 28px; }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .why-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--border);
+      flex-shrink: 0;
+      width: 56px;
+    }
+    .why-item-text h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+    .why-item-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    .why-visual {
+      background: var(--steel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .stat-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .stat-unit { font-size: 1.1rem; color: var(--muted); font-weight: 300; }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── LOCATION ── */
+    #location { background: var(--steel); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .info-block { display: flex; flex-direction: column; gap: 24px; }
+    .info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .info-icon {
+      width: 40px; height: 40px;
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .info-item-text .label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .info-item-text .value {
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .info-item-text .value a { color: var(--orange); }
+    .info-item-text .value a:hover { text-decoration: underline; }
+
+    .map-placeholder {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .map-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(60%) invert(90%) hue-rotate(180deg);
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--orange);
+      padding: 64px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-strip h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+    .cta-strip p { color: rgba(255,255,255,0.75); margin-top: 8px; font-size: 1rem; }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--orange);
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-white:hover { opacity: 0.92; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 40px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+    }
+    .footer-logo span { color: var(--orange); }
+    footer p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      section { padding: 64px 20px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .cta-strip { padding: 48px 20px; }
+      footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .status-bar { gap: 20px; }
+    }
+
+    /* ── SPARE PARTS ── */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 32px;
+    }
+    .brand-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+    }
+    .brand-tag {
+      background: var(--steel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 8px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .brand-tag:hover { border-color: var(--orange); color: var(--orange); }
+    .parts-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .part-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--light);
+    }
+    .part-dot { color: var(--orange); font-size: 0.7rem; }
+    .parts-note {
+      background: var(--steel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      padding: 16px 24px;
+      font-size: 0.92rem;
+      color: var(--light);
+      border-radius: 4px;
+    }
+    .parts-note a { color: var(--orange); font-weight: 600; }
+    .parts-note a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .parts-grid { grid-template-columns: 1fr; gap: 28px; }
+      .parts-list { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gear, .dot { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">E M <span>AUTOMOBILE'S</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#parts">Spare Parts</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="tel:08131851601" class="nav-cta">📞 Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="gear gear-1"></div>
+    <div class="gear gear-2"></div>
+    <div class="gear gear-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Two Wheeler Repair & Spare Parts · Shillong, Meghalaya</div>
+    <h1>E M<em>AUTOMOBILE'S</em></h1>
+    <p class="hero-sub">
+      Shillong's go-to workshop for all two wheelers — bikes, scooters, and mopeds. Expert repairs and genuine spare parts for every make and model.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/918131851601" class="btn-primary" target="_blank">
+        💬 WhatsApp Us
+      </a>
+      <a href="tel:08131851601" class="btn-outline">
+        📞 081318 51601
+      </a>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-item">
+        <span class="status-label">Status</span>
+        <span class="status-value"><span class="dot"></span><span class="dot-green">Open Now</span></span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Hours</span>
+        <span class="status-value">9 AM – 9 PM Daily</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Rating</span>
+        <span class="status-value"><span class="rating-stars">★★★★★</span> 5.0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">Location</span>
+        <span class="status-value">KyntonMassar, Mawlai</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Two Wheeler Services</h2>
+  <p class="section-sub">Full-service care for bikes, scooters, and mopeds of all makes — from daily commuters to performance rides.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <div class="service-name">Engine Repair</div>
+      <p class="service-desc">Complete engine diagnostics, top overhauls, and reboring for all two wheeler engines — Hero, Honda, Bajaj, TVS, Yamaha, Suzuki & more.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛞</span>
+      <div class="service-name">Tyre & Wheel</div>
+      <p class="service-desc">Tyre fitting and replacement, tube repairs, wheel truing, and spoke work for motorcycles and scooters.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛠️</span>
+      <div class="service-name">General Servicing</div>
+      <p class="service-desc">Scheduled maintenance, oil and filter changes, chain lubrication, and full two wheeler check-ups.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <div class="service-name">Electrical Systems</div>
+      <p class="service-desc">Battery checks, indicator and headlight repair, self-start motor servicing, and complete wiring fixes.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛑</span>
+      <div class="service-name">Brake Service</div>
+      <p class="service-desc">Brake shoe, disc pad, and cable replacement for drum and disc brakes — keeping your ride safe on Shillong's hilly roads.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <div class="service-name">Carburetor & Fuel</div>
+      <p class="service-desc">Carburetor cleaning, tuning, and fuel system repairs for improved performance and better mileage.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🪝</span>
+      <div class="service-name">Suspension & Fork</div>
+      <p class="service-desc">Front fork oil change, shock absorber servicing, and suspension tuning for a smooth, controlled ride.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔩</span>
+      <div class="service-name">Body & Fitment</div>
+      <p class="service-desc">Panel replacement, handle grip, mirror, and accessories fitment for all two wheeler types.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPARE PARTS -->
+<section id="parts" style="background: var(--black);">
+  <div class="section-label">Spare Parts Store</div>
+  <h2 class="section-title">Genuine Parts,<br>Every Model</h2>
+  <p class="section-sub">We stock and source genuine and aftermarket spare parts for all major two wheeler brands sold in India.</p>
+  <div class="parts-grid">
+    <div class="brand-strip">
+      <div class="brand-tag">Hero</div>
+      <div class="brand-tag">Honda</div>
+      <div class="brand-tag">Bajaj</div>
+      <div class="brand-tag">TVS</div>
+      <div class="brand-tag">Yamaha</div>
+      <div class="brand-tag">Suzuki</div>
+      <div class="brand-tag">Royal Enfield</div>
+      <div class="brand-tag">KTM</div>
+      <div class="brand-tag">Kawasaki</div>
+      <div class="brand-tag">Mahindra</div>
+    </div>
+    <div class="parts-list">
+      <div class="part-item"><span class="part-dot">▸</span> Engine components & gaskets</div>
+      <div class="part-item"><span class="part-dot">▸</span> Brake shoes, pads & cables</div>
+      <div class="part-item"><span class="part-dot">▸</span> Tyres & inner tubes</div>
+      <div class="part-item"><span class="part-dot">▸</span> Clutch plates & kits</div>
+      <div class="part-item"><span class="part-dot">▸</span> Chains, sprockets & gears</div>
+      <div class="part-item"><span class="part-dot">▸</span> Batteries & electrical parts</div>
+      <div class="part-item"><span class="part-dot">▸</span> Carburetors & fuel parts</div>
+      <div class="part-item"><span class="part-dot">▸</span> Headlights, indicators & bulbs</div>
+      <div class="part-item"><span class="part-dot">▸</span> Suspension & fork seals</div>
+      <div class="part-item"><span class="part-dot">▸</span> Body panels & mirrors</div>
+      <div class="part-item"><span class="part-dot">▸</span> Filters — oil, air & fuel</div>
+      <div class="part-item"><span class="part-dot">▸</span> Grips, levers & handlebars</div>
+    </div>
+  </div>
+  <div class="parts-note">
+    💬 Don't see the part you need? <a href="https://wa.me/918131851601" target="_blank">WhatsApp us</a> — we'll source it for you.
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-label">Why Choose Us</div>
+  <h2 class="section-title">Built on Trust,<br>Driven by Quality</h2>
+  <p class="section-sub">Shillong's riders keep coming back. Here's why.</p>
+  <div class="why-grid">
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-item-text">
+          <h3>Honest Diagnosis, Fair Pricing</h3>
+          <p>We tell you exactly what your vehicle needs — nothing more, nothing less. No hidden charges, no upselling.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-item-text">
+          <h3>Experienced Mechanics</h3>
+          <p>Our team has deep hands-on experience with all major two wheeler brands — from everyday commuter bikes to performance motorcycles.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-item-text">
+          <h3>Quick Turnaround</h3>
+          <p>We respect your time. Most standard servicing jobs are completed the same day so you're not left stranded.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-item-text">
+          <h3>Open 12 Hours a Day</h3>
+          <p>From 9 AM to 9 PM, seven days a week — we're here when you need us, including evenings and weekends.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="stat-row">
+        <div>
+          <div class="stat-num">5.0</div>
+          <div class="stat-label">Google Rating · Perfect Score</div>
+        </div>
+        <div style="color:#f4b942; font-size:1.8rem; margin-left:auto;">★★★★★</div>
+      </div>
+      <div class="stat-row">
+        <div>
+          <div class="stat-num">12<span class="stat-unit">h</span></div>
+          <div class="stat-label">Open daily — 9 AM to 9 PM</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div>
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Services for all two wheelers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-label">Find Us</div>
+  <h2 class="section-title">We're in Mawlai,<br>Shillong</h2>
+  <p class="section-sub">Conveniently located in KyntonMassar. Drop in or contact us before you visit.</p>
+  <div class="location-grid">
+    <div class="info-block">
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-item-text">
+          <div class="label">Address</div>
+          <div class="value">Road, KyntonMassar, Mawlai-mawbynna<br>Shillong, Meghalaya – 793022</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-item-text">
+          <div class="label">Working Hours</div>
+          <div class="value">9:00 AM – 9:00 PM<br>Open Every Day</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-item-text">
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:08131851601">081318 51601</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div class="info-item-text">
+          <div class="label">WhatsApp</div>
+          <div class="value"><a href="https://wa.me/918131851601" target="_blank">Chat on WhatsApp →</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🗺️</div>
+        <div class="info-item-text">
+          <div class="label">Directions</div>
+          <div class="value"><a href="https://maps.google.com/?q=KyntonMassar,Mawlai,Shillong,Meghalaya" target="_blank">Open in Google Maps →</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.0!2d91.8932!3d25.5893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375dca0a0!2sMawlai%2C%20Shillong%2C%20Meghalaya!5e0!3m2!1sen!2sin!4v1"
+        allowfullscreen=""
+        loading="lazy"
+        title="E M Automobile's location"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div>
+    <h2>Ready to Book a Service?</h2>
+    <p>Call us or drop a WhatsApp — we'll get your bike sorted.</p>
+  </div>
+  <div style="display:flex; gap:16px; flex-wrap:wrap;">
+    <a href="https://wa.me/918131851601" class="btn-white" target="_blank">💬 WhatsApp</a>
+    <a href="tel:08131851601" class="btn-white" style="background:rgba(255,255,255,0.15); color:#fff;">📞 Call Now</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">E M <span>AUTOMOBILE'S</span></div>
+  <p>© 2025 E M Automobile's · KyntonMassar, Mawlai, Shillong 793022</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#parts">Spare Parts</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="tel:08131851601">Call</a></li>
+    <li><a href="https://wa.me/918131851601" target="_blank">WhatsApp</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
